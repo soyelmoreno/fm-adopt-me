@@ -5,29 +5,38 @@ import Pet from "./Pet";
 // We create a component which is just a function that returns the result
 // of React.createElement().
 const App = () => {
-  return React.createElement(
-    "div",
-    {
-      id: "something-important",
-    },
-    [
-      React.createElement("h1", {}, "Adopt Me!"),
-      React.createElement(Pet, {
-        name: "Alex",
-        animal: "Dog",
-        breed: "Golden Lab mix",
-      }),
-      React.createElement(Pet, {
-        name: "Puddin",
-        animal: "Cat",
-        breed: "Tabby",
-      }),
-      React.createElement(Pet, {
-        name: "Zoe",
-        animal: "Dog",
-        breed: "Weiner dog",
-      }),
-    ]
+  // return React.createElement(
+  //   "div",
+  //   {
+  //     id: "something-important",
+  //   },
+  //   [
+  //     React.createElement("h1", {}, "Adopt Me!"),
+  //     React.createElement(Pet, {
+  //       name: "Alex",
+  //       animal: "Dog",
+  //       breed: "Golden Lab mix",
+  //     }),
+  //     React.createElement(Pet, {
+  //       name: "Puddin",
+  //       animal: "Cat",
+  //       breed: "Tabby",
+  //     }),
+  //     React.createElement(Pet, {
+  //       name: "Zoe",
+  //       animal: "Dog",
+  //       breed: "Weiner dog",
+  //     })
+  //   ]
+  // );
+
+  return (
+    <div>
+      <h1 id="something-important">Adopt Me!</h1>
+      <Pet name="Alex" animal="Dog" breed="Golden lab mix" />
+      <Pet name="Puddin" animal="Cat" breed="Tabby" />
+      <Pet name="Zoe" animal="Dog" breed="Weiner dog" />
+    </div>
   );
 };
 // A component is just something that returns markup. A rubber stamp.
@@ -43,4 +52,4 @@ const App = () => {
 
 // When you say .render() and give it an element, it blows away existing contents,
 // replaces it with what you are creating.
-render(React.createElement(App), document.getElementById("root"));
+render(<App />, document.getElementById("root"));
