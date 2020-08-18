@@ -1,11 +1,10 @@
-
-const Pet = ({name, animal, breed}) => {
+const Pet = ({ name, animal, breed }) => {
   return React.createElement("div", {}, [
     React.createElement("h1", {}, name),
     React.createElement("h2", {}, animal),
-    React.createElement("h2", {}, breed)
-  ])
-}
+    React.createElement("h2", {}, breed),
+  ]);
+};
 
 // We create a component which is just a function that returns the result
 // of React.createElement().
@@ -40,7 +39,7 @@ const App = () => {
 // as you want.
 
 // So now let's render this to the DOM
-// createElement: 
+// createElement:
 // first: what kind of tag is it. Either takes a composite component that you
 // wrote or a string with the tag name of the element you want to create.
 // second: all the attributes you want to give the component, the child element. Can omit.
@@ -48,8 +47,4 @@ const App = () => {
 
 // When you say .render() and give it an element, it blows away existing contents,
 // replaces it with what you are creating.
-ReactDOM.render(
-  React.createElement(App),
-  document.getElementById("root")
-);
-
+ReactDOM.render(React.createElement(App), document.getElementById("root"));

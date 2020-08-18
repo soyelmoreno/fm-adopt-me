@@ -1,2 +1,6 @@
-# Ignore VSCode settings files
-.vscode
+node_modules/
+.cache/
+dist/
+coverage/
+.vscode/
+.env
