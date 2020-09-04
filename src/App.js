@@ -1,4 +1,6 @@
+// Imports the default export from the react package
 import React from "react";
+// Imports only the render method exported from the reactDOM package
 import { render } from "react-dom";
 import SearchParams from "./SearchParams";
 
