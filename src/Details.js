@@ -3,6 +3,7 @@ import pet from '@frontendmasters/pet';
 
 // Class components. Can't use hooks with classes. useState will not function inside a class component.
 class Details extends React.Component {
+  /*
   // Set up the loading state
   constructor(props) {
     // Odd ritual that you have to do. Properties are passed in, and then you have to hand these
@@ -14,6 +15,10 @@ class Details extends React.Component {
       loading: true
     };
   }
+  */
+
+  state = {loading: true};
+
   // Similar to useEffect. Called after the first rendering is completed, but doesn't run again after that.
   componentDidMount() {
     // Should use an arrow function so that 'this' is what you expect. If you use a regular anonymous
@@ -40,6 +45,7 @@ class Details extends React.Component {
     }
 
     const {animal, breed, location, description, name} = this.state;
+
     return (
       <div className="details">
         <div>
