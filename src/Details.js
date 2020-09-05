@@ -1,5 +1,7 @@
 import React from 'react';
 import pet from '@frontendmasters/pet';
+import {navigate} from '@reach/router';
+import Modal from './Modal';
 import Carousel from './Carousel';
 import ErrorBoundary from './ErrorBoundary';
 import ThemeContext from './ThemeContext';
@@ -20,7 +22,10 @@ class Details extends React.Component {
   }
   */
 
-  state = {loading: true};
+  state = {
+    loading: true,
+    showModal: false
+  };
 
   // Similar to useEffect. Called after the first rendering is completed, but doesn't run again after that.
   componentDidMount() {
@@ -30,6 +35,7 @@ class Details extends React.Component {
       // This is a shallow merge. Override at the top level only.
       // e.g. Object.assign(oldState, newState)
       this.setState({
+        url: animal.url,
         name: animal.name,
         animal: animal.type,
         location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
@@ -41,13 +47,27 @@ class Details extends React.Component {
     }, console.error);
   }
 
+  // Toggle whether the modal is shown or not
+  toggleModal = () => this.setState({showModal: !this.state.showModal});
+
+  // Function to adopt the pet
+  adopt = () => navigate(this.state.url); // Could have used a <Redirect />
+
   // Must have a render method
   render() {
     if (this.state.loading) {
       return <h1>Loading...</h1>;
     }
 
-    const {animal, breed, location, description, name, media} = this.state;
+    const {
+      animal,
+      breed,
+      location,
+      description,
+      name,
+      media,
+      showModal
+    } = this.state;
 
     return (
       <div className="details">
@@ -61,10 +81,25 @@ class Details extends React.Component {
           reading that off of the context. */}
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button style={{backgroundColor: theme}}>Adopt {name}</button>
+              <button
+                style={{backgroundColor: theme}}
+                onClick={this.toggleModal}>
+                Adopt {name}
+              </button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>Would you like to adopt {name}?</h1>
+                <div className="buttons">
+                  <button onClick={this.adopt}>Yes</button>
+                  <button onClick={this.toggleModal}>No, I am a monster</button>
+                </div>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );

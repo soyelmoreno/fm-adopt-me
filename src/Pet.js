@@ -11,7 +11,8 @@ export default function Pet({name, animal, breed, media, location, id}) {
   return (
     // Note: if this is a regular <a> element, it would destroy the page and
     // navigate. But if we use a <Link /> element from Reach Router, then it
-    // uses HTML history to navigate, preserving our global application context/state.
+    // uses HTML history to navigate, preserving our global application
+    // context/state.
     <Link to={`/details/${id}`} className="pet">
       <div className="image-container">
         <img src={hero} alt={name} />
