@@ -1,6 +1,7 @@
 import React from 'react';
 import pet from '@frontendmasters/pet';
 import Carousel from './Carousel';
+import ErrorBoundary from './ErrorBoundary';
 
 // Class components. Can't use hooks with classes. useState will not function inside a class component.
 class Details extends React.Component {
@@ -61,4 +62,16 @@ class Details extends React.Component {
   }
 }
 
-export default Details;
+// We can pass props through down to Details using the spread operator.
+// Only do this when we don't care what is happening. Remember the whole
+// point of React is that it forces you to be specific and verbose. But
+// in this case ErrorBoundary doesn't care about every little thing in
+// props, so the spread operator is a good choice here.
+
+export default function DetailsWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}
