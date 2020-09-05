@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import pet, { ANIMALS } from "@frontendmasters/pet";
-import useDropdown from "./useDropdown";
-import Results from "./Results";
+import React, {useState, useEffect, useContext} from 'react';
+import pet, {ANIMALS} from '@frontendmasters/pet';
+import useDropdown from './useDropdown';
+import Results from './Results';
+import ThemeContext from './ThemeContext';
 
 // Render function. Will be run a bunch of times. Every time you
 // interact with application. So make sure they don't have side effects.
@@ -18,12 +19,13 @@ const SearchParams = () => {
     trick that Parcel can do for you. If you import from a module that you
     haven't yet installed, Parcel will just go find it on the npm registry and
     install it for you (and it goes in package.json > "dependencies"). */
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState('Seattle, WA');
   const [breeds, setBreeds] = useState([]);
   // Now let's use a custom hook.
-  const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
-  const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
+  const [animal, AnimalDropdown] = useDropdown('Animal', 'dog', ANIMALS);
+  const [breed, BreedDropdown, setBreed] = useDropdown('Breed', '', breeds);
   const [pets, setPets] = useState([]);
+  const [theme, setTheme] = useContext(ThemeContext);
 
   // An async function is a function that is guaranteed to return a promise
   // that will resolve whenever the function completes. Here, we ignore it.
@@ -31,10 +33,10 @@ const SearchParams = () => {
   // until pet.animals() completes (which returns a promise also) and then
   // give me back the data. Rather than pet.animals().then().
   async function requestPets() {
-    const { animals } = await pet.animals({
+    const {animals} = await pet.animals({
       location,
       breed,
-      type: animal,
+      type: animal
     });
 
     setPets(animals || []);
@@ -52,10 +54,10 @@ const SearchParams = () => {
   useEffect(() => {
     // Initialize
     setBreeds([]);
-    setBreed(""); // Coming from useDropdown. Set breed back to default.
+    setBreed(''); // Coming from useDropdown. Set breed back to default.
     // Go get breeds and populate the dropdowns
-    pet.breeds(animal).then(({ breeds: apiBreeds }) => {
-      const breedStrings = apiBreeds.map(({ name }) => name);
+    pet.breeds(animal).then(({breeds: apiBreeds}) => {
+      const breedStrings = apiBreeds.map(({name}) => name);
       setBreeds(breedStrings);
     }, console.error);
   }, [animal, setBreed, setBreeds]);
@@ -68,8 +70,7 @@ const SearchParams = () => {
         onSubmit={(e) => {
           e.preventDefault();
           requestPets();
-        }}
-      >
+        }}>
         <label htmlFor="location">
           Location
           <input
@@ -81,7 +82,19 @@ const SearchParams = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button>Submit</button>
+        <label htmlFor="theme">
+          Theme
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            onBlur={(e) => setTheme(e.target.value)}>
+            <option value="peru">Peru</option>
+            <option value="darkblue">Dark Blue</option>
+            <option value="mediumorchid">Medium Orchid</option>
+            <option value="chartreuse">Chartreuse</option>
+          </select>
+        </label>
+        <button style={{backgroundColor: theme}}>Submit</button>
       </form>
       <Results pets={pets} />
     </div>

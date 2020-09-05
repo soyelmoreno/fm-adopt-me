@@ -2,6 +2,7 @@ import React from 'react';
 import pet from '@frontendmasters/pet';
 import Carousel from './Carousel';
 import ErrorBoundary from './ErrorBoundary';
+import ThemeContext from './ThemeContext';
 
 // Class components. Can't use hooks with classes. useState will not function inside a class component.
 class Details extends React.Component {
@@ -54,7 +55,15 @@ class Details extends React.Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
-          <button>Adopt {name}</button>
+          {/* Inside of Consumer we are provided a function. theme (destructured) is passed as an
+          argument. Keep in mind that any function that returns markup is a React component. So
+          we're just creating a smaller React component inside of the theme consumer which is
+          reading that off of the context. */}
+          <ThemeContext.Consumer>
+            {([theme]) => (
+              <button style={{backgroundColor: theme}}>Adopt {name}</button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>
