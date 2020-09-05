@@ -38,8 +38,8 @@ const Modal = ({children}) => {
 
   // But when you return createPortal(), React does *not* create a new div as a child of the nearest
   // parent node. Instead it renders the children into `domNode`. `domNode` is any valid DOM node,
-  // regardless of its location in the DOM. And you still have access to functions and properties
-  // from this React component
+  // regardless of its location in the DOM. And you still have access to functions, properties, and
+  // events from this React component
   /*
   render() {
     return ReactDOM.createPortal(
