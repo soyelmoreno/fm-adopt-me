@@ -22,6 +22,7 @@ class Details extends React.Component {
   }
   */
 
+  // With class properties (aka class fields) you can do this:
   state = {
     loading: true,
     showModal: false

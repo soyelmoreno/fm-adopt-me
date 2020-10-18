@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "minify": "terser -c -m -o \"src/SearchParams.min.js\" -- \"src/SearchParams.js\"",
     "dev": "parcel src/index.html",
     "dev:mock": "cross-env PET_MOCK=mock npm run dev",
     "format": "prettier \"src/**/*.{js,html}\" --write",
@@ -26,7 +27,8 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "terser": "^5.3.0"
   },
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",
