@@ -5,9 +5,9 @@
 
 body {
   background-color: #81a69b;
-  background-image: url(http://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-background.png);
+  background-image: url(https://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-background.png);
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .search-params {
@@ -87,7 +87,7 @@ body {
 header > a,
 #root > div > h1 {
   display: inline-block;
-  background-image: url(http://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-logo.png);
+  background-image: url(https://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-logo.png);
   width: 279px;
   height: 76px;
   overflow: hidden;
