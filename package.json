@@ -1,19 +1,16 @@
 {
   "name": "fm-adopt-me",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "homepage": "https://soyelmoreno.github.io/fm-adopt-me",
   "scripts": {
-    "minify": "terser -c -m -o \"src/SearchParams.min.js\" -- \"src/SearchParams.js\"",
     "dev": "parcel src/index.html",
-    "predeploy": "rm -rf dist && parcel build src/index.html --public-url /fm-adopt-me/",
+    "predeploy": "rm -rf dist && parcel build src/index.html --public-url /fm-adopt-me",
     "deploy": "gh-pages -d dist",
     "dev:mock": "cross-env PET_MOCK=mock npm run dev",
     "format": "prettier \"src/**/*.{js,html}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -32,8 +29,7 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "gh-pages": "^3.1.0",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5",
-    "terser": "^5.3.0"
+    "prettier": "^2.0.5"
   },
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",

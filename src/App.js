@@ -1,7 +1,5 @@
 // Imports the default export from the react package
 import React, {useState} from 'react';
-// Imports only the render method exported from the reactDOM package
-import {render} from 'react-dom';
 import SearchParams from './SearchParams';
 // Import Reach Router and also the second page
 import {Router, Link} from '@reach/router';
@@ -33,4 +31,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+export default App;
