@@ -5,7 +5,7 @@
   "homepage": "https://soyelmoreno.github.io/fm-adopt-me",
   "scripts": {
     "dev": "parcel src/index.html",
-    "predeploy": "rm -rf dist && parcel build src/index.html --public-url /fm-adopt-me",
+    "predeploy": "rm -rf dist && parcel build src/index.html --public-url /fm-adopt-me/",
     "deploy": "gh-pages -d dist",
     "dev:mock": "cross-env PET_MOCK=mock npm run dev",
     "format": "prettier \"src/**/*.{js,html}\" --write",
